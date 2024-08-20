@@ -1,0 +1,40 @@
+---
+import "@/styles/globals.css"
+
+import { Toaster } from "@/components/ui/toaster"
+import { Icon } from "astro-icon/components"
+import MinimalLayout from "./MinimalLayout.astro"
+import DefaultFooter from "@/components/DefaultFooter.astro"
+
+const { title } = Astro.props
+---
+
+<MinimalLayout title={title}>
+  <header class="flex items-center h-[var(--nav-height)] md:h-18 z-50 sticky top-0 bg-background shadow-sm w-full">
+    <slot name="header">
+      <div class="flex container items-center max-w-[64rem] justify-between space-x-1 gap-8 md:gap-8 lg:gap-10">
+        <div class="flex items-center gap-8">
+          <a href="/" class="hidden items-center space-x-2 md:flex gap-4">
+            <Icon name="mdi:lock" class="size-6" />
+            <span class="hidden font-bold sm:inline-block">Piclockr</span>
+          </a>
+        </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-4 -translate-y-4 md:hidden">
+          <a href="/" class="hidden">
+            <Icon name="mdi:lock" class="size-6" />
+            <span class="hidden font-bold">Piclockr</span>
+          </a>
+        </div>
+      </div>
+    </slot>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    <slot name="footer">
+      <DefaultFooter />
+    </slot>
+  </footer>
+  <Toaster client:load />
+</MinimalLayout>

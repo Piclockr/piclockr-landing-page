@@ -1,0 +1,32 @@
+---
+import DefaultFooter from "@/components/DefaultFooter.astro"
+import { ValidateEmail } from "@/components/ValidateEmail"
+import MinimalLayout from "@/layouts/MinimalLayout.astro"
+import { Icon } from "astro-icon/components"
+---
+
+<MinimalLayout title="Piclockr - Verify email">
+  <div class="flex flex-col h-screen">
+    <div class="flex items-center h-[var(--nav-height)] md:h-18 z-50 sticky top-0 bg-background shadow-sm w-full">
+      <div class="flex container items-center max-w-[64rem] justify-between space-x-1 gap-8 md:gap-8 lg:gap-10">
+        <div class="flex items-center gap-8">
+          <a href="/" class="hidden items-center space-x-2 md:flex gap-4">
+            <Icon name="mdi:lock" class="size-6" />
+            <span class="hidden font-bold sm:inline-block">Piclockr</span>
+          </a>
+        </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-4 -translate-y-4 md:hidden">
+          <a href="/" class="hidden">
+            <Icon name="mdi:lock" class="size-6" />
+            <span class="hidden font-bold">Piclockr</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <section class="flex flex-col items-center justify-center gap-8 px-4 pt-56">
+      <ValidateEmail client:only />
+    </section>
+    <div class="flex-grow flex-shrink-0"></div>
+    <DefaultFooter />
+  </div>
+</MinimalLayout>

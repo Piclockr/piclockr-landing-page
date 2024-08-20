@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "@/*": ["*"]
+        },
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "strict": false
+    },
+    "include": ["**/*.ts"]
+}

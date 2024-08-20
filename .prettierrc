@@ -1,0 +1,26 @@
+{
+    "semi": true,
+    "overrides": [
+        {
+            "files": "*.mdx",
+            "options": {
+                "printWidth": 120,
+                "proseWrap": "always"
+            }
+        },
+        {
+            "files": ["*.ts", "*.tsx"],
+            "options": {
+                "printWidth": 160,
+                "proseWrap": "always"
+            }
+        },
+        {
+            "files": ["*.astro", "*.html"],
+            "options": {
+                "printWidth": 160,
+                "proseWrap": "always"
+            }
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+name = "piclockr-landingpage"
+compatibility_date = "2023-06-14"
+
+[vars]
+ENVIRONMENT = "dev"
+CLOUDWATCH_LOG_GROUP_NAME = "piclockr/dev/cloudflare/landing-page"
+DISCORD_THREAD_ID = "1206976742774808577"
+VALIDATION_BASE_URL = "http://localhost:8788"
+
+[env.preview.vars]
+ENVIRONMENT = "preview"
+CLOUDWATCH_LOG_GROUP_NAME = "piclockr/preview/cloudflare/landing-page"
+DISCORD_THREAD_ID = "1207239600427241473"
+
+[env.production.vars]
+ENVIRONMENT = "production"
+CLOUDWATCH_LOG_GROUP_NAME = "piclockr/production/cloudflare/landing-page"
+DISCORD_THREAD_ID = "1207260462593343501"
+
+[[d1_databases]]
+binding = "DB"
+database_id = "dev-id"
+database_name = "piclockr-dev"
+
+[[env.preview.d1_databases]]
+binding = "DB"
+database_id = "preview-id"
+database_name = "piclockr-preview"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_id = "production-id"
+database_name = "piclockr-production"
+
+[[queues.producers]]
+queue = "cloudwatch-out-queue"
+binding = "CLOUDWATCH_OUT_QUEUE"
+
+[[env.preview.queues.producers]]
+queue = "cloudwatch-out-queue-preview"
+binding = "CLOUDWATCH_OUT_QUEUE"
+
+[[env.production.queues.producers]]
+queue = "cloudwatch-out-queue-production"
+binding = "CLOUDWATCH_OUT_QUEUE"
+
+[[queues.producers]]
+queue = "discord-out-queue"
+binding = "DISCORD_OUT_QUEUE"
+
+[[env.preview.queues.producers]]
+queue = "discord-out-queue-preview"
+binding = "DISCORD_OUT_QUEUE"
+
+[[env.production.queues.producers]]
+queue = "discord-out-queue-production"
+binding = "DISCORD_OUT_QUEUE"

@@ -1,0 +1,20 @@
+---
+import "@/styles/globals.css"
+
+import { ViewTransitions } from "astro:transitions"
+
+const { title } = Astro.props
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Securely store and backup your photos in the cloud with end-to-end encryption. Protect your privacy with our encrypted photo storage service." />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body class="h-full w-full">
+    <slot />
+  </body>
+</html>

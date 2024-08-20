@@ -1,0 +1,27 @@
+---
+import DefaultFooter from "@/components/DefaultFooter.astro"
+import TermsOfService from "@/components/termsOfService.mdx"
+import MinimalLayout from "@/layouts/MinimalLayout.astro"
+import { Icon } from "astro-icon/components"
+---
+
+<MinimalLayout>
+  <div class="flex flex-col h-full">
+    <div class="flex items-center justify-between space-x-1 gap-8 h-[var(--nav-height)] shadow-sm">
+      <div class="flex container items-center gap-8 max-w-[64rem]">
+        <a href="/" class="items-center space-x-2 flex gap-4">
+          <Icon name="mdi:lock" class="size-6" />
+          <span class="font-bold sm:inline-block">Piclockr</span>
+        </a>
+      </div>
+    </div>
+    <section class="flex flex-col items-center justify-center gap-8 px-4 pt-20">
+      <div class="container prose max-w-[64rem] pb-10">
+        <TermsOfService />
+      </div>
+    </section>
+  </div>
+  <div class="flex-shrink-0 w-full">
+    <DefaultFooter />
+  </div>
+</MinimalLayout>

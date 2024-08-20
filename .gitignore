@@ -1,0 +1,12 @@
+.idea/*
+!.idea/runConfigurations/
+*.iml
+
+node_modules
+dist
+.astro
+.wrangler
+.dev.vars
+
+functions/\[\[path\]\].js 
+.DS_Store

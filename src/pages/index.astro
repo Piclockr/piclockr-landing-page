@@ -1,0 +1,177 @@
+---
+export const prerender = true
+
+import "@/styles/globals.css"
+
+import LandingSection from "@/components/LandingSection.astro"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { FAQ } from "@/components/widgets/faq"
+import { JoinWaitlist } from "@/components/widgets/join-waitlist"
+import { MainNavigationMenu } from "@/components/widgets/nav-menu"
+import { PricingCalculator } from "@/components/widgets/pricing-calculator"
+import BasicLayout from "@/layouts/BasicLayout.astro"
+import { Icon } from "astro-icon/components"
+
+const features = [
+  {
+    icon: "mdi:encryption-reset",
+    name: "End-to-End Encryption",
+    description: "Your photos are securely encrypted from the moment they are uploaded until they are accessed, ensuring maximum privacy and protection.",
+  },
+  {
+    icon: "circle-flags:eu",
+    name: "Stored on EU Servers",
+    description:
+      "All user data, including photos, are stored exclusively on servers located within the European Union, adhering to strict data protection regulations.",
+  },
+  {
+    icon: "tdesign:check-double",
+    name: "Dual Backup",
+    description:
+      "Your photos are stored redundantly on servers in two separate data centers, each managed by a different service provider. This ensures high availability and resilience for your data.",
+  },
+  {
+    icon: "mdi:chart-line",
+    name: "Usage-Based Pricing Model",
+    description: "Pay only for what you use with our flexible pricing model, allowing you to scale your storage needs according to your usage.",
+  },
+  {
+    icon: "mdi:github",
+    name: "Open Source",
+    description: "Our platform is built on open-source technology, promoting transparency, security, and community collaboration.",
+  },
+]
+---
+
+<style>
+  .text-gradient_indigo-purple {
+    background: linear-gradient(90deg, #6366f1 0%, #9f7aea 50%, #d53f8c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
+<BasicLayout title="Piclockr - Encrypted Cloud Storage for Photos">
+  <div slot="header" class="flex container max-w-[64rem] items-center justify-between space-x-1 gap-8 md:gap-8 lg:gap-10">
+    <div class="flex items-center gap-8 w-full">
+      <a href="/" class="hidden items-center space-x-2 md:flex gap-4">
+        <Icon name="mdi:lock" class="size-6" />
+        <span class="hidden font-bold sm:inline-block">Piclockr</span>
+      </a>
+      <MainNavigationMenu client:load />
+      <p class="md:hidden font-bold">Piclockr</p>
+    </div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-4 -translate-y-4 md:hidden">
+      <a href="/" class="hidden">
+        <Icon name="mdi:lock" class="size-6" />
+        <span class="hidden font-bold">Piclockr</span>
+      </a>
+    </div>
+  </div>
+  <div>
+    <section class="space-y-6 pb-12 pt-16 lg:py-28">
+      <div class="container flex flex-col items-center text-center max-w-[64rem] gap-5">
+        <h1 class="text-4xl font-bold text-balance !leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl">
+          Securely Store Your Photos in the Cloud using
+          <span class="text-gradient_indigo-purple"> Piclockr</span>
+        </h1>
+        <p class="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+          Securely store and protect your photos from unauthorized access with end-to-end encryption in the cloud. Access your images from any browser-enabled
+          device, wherever you are.
+        </p>
+        <div>
+          <JoinWaitlist client:load />
+        </div>
+        <div>
+          <video class="w-full md:px-15 lg:px-20" autoplay loop muted playsinline>
+            <source src="web_fhd_30__landing_page.mp4" media="(min-width: 768px)" type="video/mp4" />
+            <source src="web_fhd_30__landing_page_mobile.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
+    <LandingSection
+      id="features"
+      title="Features"
+      subtitle="Piclockr is the ideal choice for organizing and protecting your valuable photo memories."
+      class="bg-slate-50"
+    >
+      <div class="w-full grid mx-auto gap-4 grid-cols-1 xs:grid-cols-2 md:grid-cols-3 md:max-w-[64rem] justify-center">
+        {
+          features.map((iter) => (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">
+                  <div class="flex flex-col text-left gap-2">
+                    <Icon name={iter.icon} class="size-10" />
+                    {iter.name}
+                  </div>
+                </CardTitle>
+                <CardDescription className="text-left">{iter.description}</CardDescription>
+              </CardHeader>
+            </Card>
+          ))
+        }
+      </div>
+    </LandingSection>
+    <LandingSection
+      id="pricing"
+      title="Pricing"
+      subtitle="Our pricing model is simple as storing photos in the cloud. You only pay for what you use. No hidden fees, no surprises."
+    >
+      <div class="mx-auto max-w-[48rem] flex flex-col justify-center items-center gap-6 w-full">
+        <Card>
+          <CardHeader>
+            <CardTitle>Unlimited Storage</CardTitle>
+            <CardDescription>Pay as you go</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div class="flex flex-col px-16">
+              <div>
+                <p>
+                  <span class="font-bold text-l whitespace-nowrap">EUR 0.99 / month</span>
+                </p>
+                <p class="text-muted-foreground text-sm">includes 15GB</p>
+              </div>
+              <div class="self-center">
+                <p>+</p>
+              </div>
+              <div>
+                <p>
+                  <span class="font-bold text-l whitespace-nowrap">EUR 0.04 / month</span>
+                </p>
+                <p class="text-muted-foreground text-sm">per GB</p>
+              </div>
+            </div>
+            <div class="flex flex-col pt-8">
+              <p class="font-semibold text-left">This includes:</p>
+              <div class="flex flex-row gap-3 pt-2">
+                <Icon name="mdi:check-circle-outline" class="size-6 text-green-500" />
+                <p>Unlimited Storage</p>
+              </div>
+              <div class="flex flex-row gap-3 pt-1">
+                <Icon name="mdi:check-circle-outline" class="size-6 text-green-500" />
+                <p>15 GB Storage</p>
+              </div>
+              <div class="flex flex-row gap-3 pt-1">
+                <Icon name="mdi:check-circle-outline" class="size-6 text-green-500" />
+                <p>Cancel at any time</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        <div class="w-full pt-8">
+          <p class="text-xl font-bold">Calculator</p>
+          <p>Try it out and estimate your costs.</p>
+          <div class="pt-4 grid">
+            <PricingCalculator client:visible />
+          </div>
+        </div>
+      </div>
+    </LandingSection>
+    <LandingSection id="faq" title="FAQ" class="bg-slate-50">
+      <div class="w-full">
+        <FAQ client:visible />
+      </div>
+    </LandingSection>
+  </div>
+</BasicLayout>
